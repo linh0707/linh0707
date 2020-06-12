@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8" />
+  <head>
+    <title>Project 3</title>
+
+    <style>
+          * {
+            text-align: center;
+          }
+          body{
+            background-color: rgb(91, 176, 209);
+            margin: 0;
+            padding: 0;
+          }
+          nav{
+            background-color: white;
+            height: 80px;
+          }
+          header {
+             width: 100%;
+          }
+          h1 { 
+            color: rgb(0, 89, 255);
+            font-size: 50px;
+            padding: 10px 0;
+          }
+          #submitdata {
+            display: flex;
+            justify-content: center;
+          }
+          th,
+          #data td {
+            border: white solid;
+            text-align: center;
+            color: white;
+            border-radius: 24px;
+          }
+          #data {
+            width: 100%;
+          }
+          input{
+            border:0;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid white;
+            padding: 14px 40px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+          }
+
+          input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #fff;
+            }
+            input::-moz-placeholder { /* Firefox 19+ */
+            color: #fff;
+            }
+            input:-ms-input-placeholder { /* IE 10+ */
+            color: #fff;
+            }
+            input:-moz-placeholder { /* Firefox 18- */
+              color: #fff;
+            }
+
+            button {
+              background-color: #fff;
+              border: none;
+              color:rgb(0, 89, 255);
+              border: 2px solid white;
+              outline: none;
+              border-radius: 24px;
+            }
+            #submit {
+              padding: 14px 40px;
+            }
+            main {
+              background-color:rgb,(0 89, 255); 
+              padding: 20px;
+            }
+          .red {
+              color: rgb(0, 89, 255);
+          }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <h1>Class Marksheet</h1>
+    </nav>
+ 
+    <header>
+      <table id="submitdata">
+        <tr>
+          <td>
+            <input
+              type="text"
+              class="dataScore"
+              id="fullname"
+              placeholder="Fullname"
+              required
+            />
+          </td>
+          <td class="inputData fullname red"></td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              type="text"
+              class="dataScore"
+              id="math"
+              placeholder="Math Score"
+              required
+            />
+          </td>
+          <td class="inputData score math red"></td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              type="text"
+              class="dataScore"
+              id="phy"
+              placeholder="Physics Score"
+              required
+            />
+          </td>
+          <td class="inputData score phy red"></td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              type="text"
+              class="dataScore"
+              id="chem"
+              placeholder="Chemistry Score"
+              required
+            />
+          </td>
+          <td class="inputData score chem red"></td>
+        </tr>
+      </table>
+      <button type="button" id="submit" onclick="submit()">Nhập</button>
+    </header>
+
+    <br /><br />
+    <main>
+      <table id="data">
+        <tr>
+          <th>STT</th>
+          <th>Họ tên</th>
+          <th>Điểm toán</th>
+          <th>Điểm lý</th>
+          <th>Điểm hóa</th>
+          <th>Trung bình</th>
+        </tr>
+        <tr class="addData"></tr>
+      </table>
+
+      <br /><br />
+
+      <button type="button" id="calculate">Tính điểm trung bình</button>
+      <button type="button" id="analyze">Xác định học sinh giỏi</button>
+    </main>
+    
+  </body>
+    <script>
+  let a = 0;
+   function submit() {
+     let alertRowsValue = ['full name','math' ,'physics','chemistry'];
+     let inputValue = document.querySelectorAll(".dataScore");
+    let alertNotValidInput = document.querySelectorAll(".inputData");
+
+     for (let i = 0; i < alertRowsValue.length; i++) {
+     let  blankValid = new Promise( function (resolve, reject){
+      if (inputValue[i].length == 0) {
+        resolve(()=> {alertNotValidInput[i].innerHTML =  "Please enter " + alertRowsValue[i]});
+      } else {
+        reject(()=> {alertNotValidScore[i].innerHTML =  "0"})
+      }
+     if(isNaN(alertRowsValue[i + 1]) == true) {
+      resolve(()=> {alertIfNotValid[i + 1].innerHTML = "Please enter a valid " + alertRowsValue[i + 1] + " score"});
+      }else {
+        reject(()=> {alertNotValidScore[i + 1].innerHTML =  "0"})
+      }
+     if (dataScore[i + 1] > 10) {
+      resolve(()=> {alertIfNotValid[i + 1].innerHTML = "We don't have such high scores"})
+     } else {
+        reject(()=> {alertNotValidScore[i + 1].innerHTML =  "0"})
+      }
+    });
+    let  addRows = new Promise( function (resolve, reject){
+      if (inputValue[i].length == 0) {
+        resolve(()=> {alertNotValidInput[i].innerHTML =  "Please enter " + alertRowsValue[i]});
+      } 
+     
+  }
+  }
+
+    </script>
+  </body>
+</html>
